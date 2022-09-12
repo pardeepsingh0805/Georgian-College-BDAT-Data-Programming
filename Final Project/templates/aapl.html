@@ -1,0 +1,37 @@
+{% extends "navbar.html"%}
+
+{%block content%}
+<h3 style="text-align: center"> Apple's Portfolios</h3>
+<div id = "chart1"></div>
+
+<p style="text-align: center">
+The following table has all the information about "AAPL" stocks.
+</p>
+
+<table class="table table-striped" style="text-align: center">
+<tr>
+    <th>Date</th>
+    <th>Symbol</th>
+    <th>Open</th>
+    <th>High</th>
+    <th>Low</th>
+    <th>Close</th>
+    <th>Volume</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    {% for cell in row %}
+    <td>{{cell}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+
+<table>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        var graph1 = {{graph1JSON | safe}};
+        Plotly.plot("chart1", graph1, {})
+    </script>
+{%endblock%}

@@ -1,0 +1,68 @@
+{% extends "navbar.html"%}
+
+{%block content%}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Stock Stalker!</h1>
+    <p class="lead">This website gets data for 5 most popular stocks including: "AAPL","MSFT","GOOG","TSLA" & "AMZN"
+        and represent the information in graphical manner. This project is part of Learning at Georgian College, Barrie
+        and this project is the final project for Data Programming. This website is not for official use.
+
+        It fetch data every 24 hour for latest day and add it to the graph. Github repository is also available for this project.
+    </p>
+    <hr class="my-4">
+    <h3 style="text-align: center"> API Info</h3>
+    <p>
+        Stock Stalker provides a variety of API for getting information from database. The information can be accessed for various purposes.
+        To access the api please use the following information:
+    </p>
+    <h5> To get all information: <code>./api</code></h5>
+    <h5> To get information for a symbol: <code>./api/symbol</code></h5>
+    <h5> For a particular date<code>./api/YYYY-MM-DD</code></h5>
+    <h5> For a particular date & symbol<code>./api/YYYY-MM-DD/symbol</code></h5>
+    <p>
+        <b>Note: </b> Symbol represents the stock, so inorder to access api, please replace "symbol" with stock symbol. For eg: "./api/aapl" and for date "YYYY-MM-DD" pattern should be followed.
+    </p>
+  </div>
+
+
+<h3 style="text-align: center"> Apple's Portfolio</h3>
+<div id = "chart1"></div>
+
+<h3 style="text-align: center"> Microsoft's Portfolio</h3>
+<div id = "chart2"></div>
+
+<h3 style="text-align: center"> Google's Portfolio</h3>
+<div id = "chart3"></div>
+
+<h3 style="text-align: center"> Tesla's Portfolio</h3>
+<div id = "chart4"></div>
+
+<h3 style="text-align: center"> Amazon's Portfolio</h3>
+<div id = "chart5"></div>
+
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var graph1 = {{graph1JSON | safe}};
+    Plotly.plot("chart1", graph1, {})
+</script>
+<script>
+    var graph2 = {{graph2JSON | safe}};
+    Plotly.plot("chart2", graph2, {})
+</script>
+<script>
+    var graph3 = {{graph3JSON | safe}};
+    Plotly.plot("chart3", graph3, {})
+</script>
+<script>
+    var graph4 = {{graph4JSON | safe}};
+    Plotly.plot("chart4", graph4, {})
+</script>
+<script>
+    var graph5 = {{graph5JSON | safe}};
+    Plotly.plot("chart5", graph5, {})
+</script>
+{%endblock%}
+
+</body>
+</html>
